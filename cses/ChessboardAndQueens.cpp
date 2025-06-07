@@ -1,43 +1,29 @@
-// https://cses.fi/problemset/task/1624
+// https://cses.fi/problemset/result/13164478/
 
 #include <iostream>
 #include <vector>
 using namespace std;
 
-int DIMENSION = 8;
+vector<long long> apples;
+int n;
 
-vector<vector<bool>> reserved(DIMENSION, vector<bool>(DIMENSION));
-
-vector<bool> taken_row(DIMENSION);
-vector<bool> taken_diag_1(2*DIMENSION-1);
-vector<bool> taken_diag_2(2*DIMENSION-1);
-
-int ans = 0;
-
-void solve(int r) {
-    if (r == DIMENSION) {
-        ans++;
-        return;
-    }
-
-    for (int i=0;i<DIMENSION;i++) {
-        if (taken_row[i] || taken_diag_1[r+i] || taken_diag_2[i-r+DIMENSION-1] || reserved[r][i]) continue;
-        taken_row[i] = taken_diag_1[r+i] = taken_diag_2[i-r+DIMENSION-1] = true;
-        solve(r+1);
-        taken_row[i] = taken_diag_1[r+i] = taken_diag_2[i-r+DIMENSION-1] = false;
+long long search_difference(int k, long long group_1, long long group_2) {
+    if (k == n) {
+        return abs(group_1-group_2);
+    } else {
+        return min(search_difference(k+1, group_1+apples[k], group_2), search_difference(k+1, group_1, group_2+apples[k]));        
     }
 }
 
-int main() {
-    for (int i=0;i<DIMENSION;i++) {
-        string row;
-        cin >> row;
-        for (int j=0;j<DIMENSION;j++) {
-            reserved[i][j] = row[j] == '*';
-        }
+int main() {          
+    cin>>n;
+    apples.resize(n);
+
+    for (int i=0;i<n;i++) {
+        cin>>apples[i];
     }
 
-    solve(0);
-
-    cout << ans;
+    cout << search_difference(0, 0, 0) << endl;
+    
+    return 0;    
 }
