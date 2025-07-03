@@ -20,7 +20,7 @@ void solve() {
         return;
     }
 
-    string letters = "abcdefghijklmnopqrstuvwxyz";
+    string letters = "abcdefghijklmnopqrstuvwA. Juicerxyz";
 
     ans.resize(n);
 

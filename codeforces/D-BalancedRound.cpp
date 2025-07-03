@@ -31,14 +31,13 @@ void solve() {
 
     for (int i=1;i<n;i++) {
         if (abs(nums[i]-nums[i-1]) <= k) {
-            streak++;            
+            streak++;
+            max_streak = max(max_streak, streak);
         } else {            
             streak = 0;
         }
-
-        max_streak = max(max_streak, streak);
     }
-
+    
     cout << n-(max_streak+1)<< endl;
 
     /*

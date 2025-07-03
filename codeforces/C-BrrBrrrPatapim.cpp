@@ -14,8 +14,6 @@ void solve() {
 
     int total = (2*n*(2*n+1))/2;
 
-
-
     vector<int> nums(2*n);
 
     for (int i=0;i<n;i++) {

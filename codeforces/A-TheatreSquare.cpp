@@ -12,16 +12,10 @@ int main() {
     int n,m,a;
     cin>>n>>m>>a;
 
-    if (a <= n && a <= m) {
-        cout << (n-a)+(m-a);
-    }
+    int ans = 0;
 
-    if (a>n) {
-        cout << a-m;
-    }
-
-    if (a>m) {
-        cout << a-n;
+    if (n>a) {
+        ans += 
     }
 
     //cout << 
