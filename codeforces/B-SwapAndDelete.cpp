@@ -28,6 +28,24 @@ void solve() {
         cout << 0 << endl;
         return;
     }
+
+
+    string ans;
+
+    ans.resize(s.length());
+
+    for (int i=0;i<s.length();i++) {
+
+    }
+
+    /*
+    111100
+
+
+    001111
+
+
+    */
 }
 
 int main() {
