@@ -31,7 +31,7 @@ void solve() {
     ll count_a = 0;
     ll count_b = 0;
 
-    bool ans[k];
+    vector<bool> ans(k, false);
 
     /*
     a=[2,3,8,5,6,5]
@@ -39,30 +39,59 @@ void solve() {
 
     a=[2, 3, 5, 5, 6, 8]
     b=[1, 3, 4, 5, 10]    
+
+    a = [2, 3, 5, 6]
+    b = [1, 3, 4, 5]
+
+
     */
 
-    for (int i=0;i<n;i++) {
-        if (nums_a[n] <= k && !ans[nums_a[n]] && count_a < k/2) {
-            count_a++;
-            ans[nums_a[n]] = true;
+    set<int> temp_a;
+    set<int> temp_b;
+
+    set<int> final;
+
+     for (int i = 0; i < n; i++) {
+        if (nums_a[i] <= k) {
+            temp_a.insert(nums_a[i]);
         }
     }
 
-    for (int i=0;i<m;i++) {
-        if (nums_b[n] <= k && !ans[nums_b[n]] && count_b < k/2) {
-            count_b++;
-            ans[nums_b[n]] = true;
-        }        
-    }
-
-    for (int i=0;i<k;i++) {
-        if (!ans[i]) {
-            cout << "NO" << endl;
-            return;
+    for (int i = 0; i < m; i++) {
+        if (nums_b[i] <= k) {
+            temp_b.insert(nums_b[i]);
         }
     }
 
-    cout << "YES" << endl;     
+    for (int i:temp_a) {
+        final.insert(i);
+    }
+
+    for (int i:temp_b) {
+        final.insert(i);
+    }
+        
+    if (temp_a.size() >= k/2 && temp_b.size() >= k/2 && final.size() == k) {
+        cout << "YES" << endl;
+    } else {
+        cout << "NO" << endl;
+    }    
+
+    /*for (int i:temp_a) {
+        cout << i << " ";
+    }
+
+    cout << endl;
+
+    for (int i:temp_b) {
+        cout << i << " ";
+    }
+
+    cout << endl;
+
+    for (int i:final) {
+        cout << i << " ";
+    }*/
 }
 
 int main() {
