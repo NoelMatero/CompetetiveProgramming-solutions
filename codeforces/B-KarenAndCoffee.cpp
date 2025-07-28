@@ -14,7 +14,7 @@
     int main() {
         ios_base::sync_with_stdio(0);
 	    cin.tie(0);
-        
+
         ll n, k, q;
      
         cin >> n >> k >> q;
@@ -37,10 +37,20 @@
             instances[l]++;
             instances[r+1]--;
         }    
-     
+        
+        for (int i=0;i<5;i++) {
+            cout << instances[i] << " ";
+        }
+
         for (int i=1;i<max_r+2;i++) {
             instances[i] += instances[i-1];        
         }
+
+        for (int i=0;i<5;i++) {
+            cout << instances[i] << " ";
+        }
+
+        cout << endl;
         
         for (int i=0;i<q;i++) {
             ll a, b;
