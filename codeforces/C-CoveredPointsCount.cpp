@@ -25,17 +25,30 @@ int main() {
         points[i] = make_pair(a, b);        
     }
 
-    vector<ll> times;
+    ll max_point;
+
+    vector<ll> start_times;
+    vector<ll> end_times;
+    unordered_map<ll, ll> start_to_end;
     for (auto [a, b] : points) {
-        times.push_back(a);
-        times.push_back(b);
+        start_times.push_back(a);
+        end_times.push_back(b);
+        start_to_end[a] = b;
+
+        max_point = max(max_point, b);
     }
 
-    sort(times.begin(), times.end());
+    /*
+    
+    
+    */
+        
+    sort(start_times.begin(), start_times.end());
+    sort(end_times.begin(), end_times.end());
     //times.erase(unique(times.begin(), times.end()), times.end());
 
     unordered_map<ll, int> time_to_index;
-    for (int i = 0; i < times.size(); ++i) {
+    for (int i = 0; i < start_times.size(); ++i) {
         time_to_index[times[i]] = i;
     }
 
@@ -57,18 +70,22 @@ int main() {
     }
     
 
-    ll left = n;
-    for (int i=1;i<n;i++) {
-        left -= ans[1];
+    ll left = max_point;
+    for (int i=2;i<=n;i++) {
+        left -= ans[i];
     }
 
     ans[1] += left;
 
-    for (int i : ans) cout << i << " ";
+    for (int i : pref_sum) cout << i << " ";
 
+    cout << endl;
 
+    for (int i=1;i<=n;i++) {
+        cout << ans[i] << " ";
+    }
 
-
+    
 
     /*
     0 3
