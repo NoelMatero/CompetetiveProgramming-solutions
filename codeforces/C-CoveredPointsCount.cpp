@@ -39,7 +39,23 @@ int main() {
     }
 
     /*
-    
+    for each start time, we will count the current prefix sum and update ans[prefix_sum] 
+    value by adding to it the distance between end_time[i]-start_time[i]
+
+    because the current prefix sum will continue until the first segment ends
+
+    start_times:
+
+    0
+    1
+    3
+
+    end times:
+
+    3
+    3
+    8
+     
     
     */
         

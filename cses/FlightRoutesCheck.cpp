@@ -52,7 +52,7 @@ void solve() {
 		visited[i] = true;		
 
 		dfs(i);
-
+        
         for (bool visit : visited) cout << visit << " ";
         temp++;
 

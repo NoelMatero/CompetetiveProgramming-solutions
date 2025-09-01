@@ -29,7 +29,7 @@ int main() {
 
     ll ans = 0;
 
-    if (n == 1) { cout << nums.top().first << endl; return 0;}
+    if (n == 1) { cout << nums.top().first << endl; return 0; }
 
     for (int i=0;i<n/2;i++) {
         if (nums.top().second == robot_idx) {
@@ -43,6 +43,6 @@ int main() {
 
         robot_idx++;
     }
-
+    
     cout << ans << endl;
 }
